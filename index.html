@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,63 +10,79 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-color: #4169e4;
+        background-color: #f3ebfc;
       }
-
       .container {
+        position: relative;
         display: flex;
         width: 30vh;
         height: 50vh;
-        background-color: #fffff0;
+        background-color: #f4ecf4;
         justify-content: space-evenly;
         align-items: center;
         border-radius: 5%;
         flex-direction: column;
-        border: 3px solid #800020;
+        border: 3px solid #d15a9d;
       }
-
       h1 {
-        color: #4169e4;
+        color: #d15a9d;
         font-family: serif;
         font-size: 2.5rem;
+        text-align: center;
+        margin: 10px;
       }
-      
       .catsContainer {
-        border: 3px solid black;
+        border: 3px solid #ecdce8;
         border-radius: 50%;
-        max-width: 300px;
-        max-height: 300px;
+        width: 150px;
+        height: 150px;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-
-      .buttonYes {
+      .catsContainer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+      .catsContainer img:first-child {
+        display: block;
+      }
+      .finalCats {
+        display: none;
+        justify-content: space-around;
+        width: 100%;
+      }
+      .finalCats .catsContainer {
+        width: 100px;
+        height: 100px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .buttonYes, .buttonNo, .buttonRetry {
         width: 75px;
         height: 40px;
-        background-color: ;
-        color: ;
-        border: 3px solid black;
+        background-color: #d15a9d;
+        color: #f4ecec;
+        border: 3px solid #ecdce8;
         border-radius: 5%;
-        margin: 0 25px 0 0;
         padding: 10px 20px;
         cursor: pointer;
+        font-weight: bold;
       }
-
-      .buttonNo {
-        width: 75px;
-        height: 40px;
-        background-color: ;
-        color: ;
-        border: 3px solid black;
-        border-radius: 5%;
-        margin: 0 0 0 25px;
-        padding: 10px 20px;
-        cursor: pointer;
+      .buttonRetry {
+        display: none;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Will you be mine?</h1>
+      <h1>Will it be US?</h1>
       <div class="catsContainer">
         <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnp6cGEwMm51YTUwZWpqNXlvOWdxcXZodnFwYzg5OHpwcXJ3eWJqZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/e5rDUz4opzClDK9DwX/giphy.gif" alt="excited cat" />
         <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXNkaHh4dTRkaXpnaTRheDZsdmo5Z2QzNmV0a3NtYTJvODdudHpndSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/B1pQ0NkuPhP2oRTkXz/giphy.gif" alt="cry cat" />
@@ -79,10 +94,68 @@
         <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbno4amQ5dXVqcW54ODh3cXM3cjEyZjZkOW8xajR1amp1aW4ydWxsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rtHuVAvzbl07kRebPo/giphy.gif" alt="happy cat" />
         <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWg5bGdjZXFldW15NTAyOGk2M3JuejdmcjdzMnU4aW01bnVhdDA3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JA1kmF8xsLQCm2qMcA/giphy.gif" alt="happy cat" />
       </div>
+      <div class="finalCats">
+        <div class="catsContainer">
+          <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbno4amQ5dXVqcW54ODh3cXM3cjEyZjZkOW8xajR1amp1aW4ydWxsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rtHuVAvzbl07kRebPo/giphy.gif" alt="happy cat" style="display: block;" />
+        </div>
+        <div class="catsContainer">
+          <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWg5bGdjZXFldW15NTAyOGk2M3JuejdmcjdzMnU4aW01bnVhdDA3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JA1kmF8xsLQCm2qMcA/giphy.gif" alt="happy cat" style="display: block;" />
+        </div>
+      </div>
       <div class="buttons">
         <button class="buttonYes">Yes</button>
         <button class="buttonNo">No</button>
+        <button class="buttonRetry">Try Again</button>
       </div>
     </div>
+    <script>
+      const container = document.querySelector('.container');
+      const buttonNo = document.querySelector('.buttonNo');
+      const buttonYes = document.querySelector('.buttonYes');
+      const buttonRetry = document.querySelector('.buttonRetry');
+      const mainCatsContainer = document.querySelector('.catsContainer');
+      const finalCats = document.querySelector('.finalCats');
+      const allGifs = mainCatsContainer.querySelectorAll('img');
+      const h1 = document.querySelector('h1');
+      function getRandomPosition() {
+        const containerRect = container.getBoundingClientRect();
+        const buttonRect = buttonNo.getBoundingClientRect();
+        const yesButtonRect = buttonYes.getBoundingClientRect();
+        let x, y;
+        do {
+          x = Math.random() * (containerRect.width - buttonRect.width);
+          y = Math.random() * (containerRect.height - buttonRect.height);
+          const overlap = x < (yesButtonRect.right - containerRect.left) &&
+            (x + buttonRect.width) > (yesButtonRect.left - containerRect.left) &&
+            y < (yesButtonRect.bottom - containerRect.top) &&
+            (y + buttonRect.height) > (yesButtonRect.top - containerRect.top);
+          if (!overlap) break;
+        } while (true);
+        return { x: containerRect.left + x, y: containerRect.top + y };
+      }
+      function showRandomGif() {
+        allGifs.forEach(gif => gif.style.display = 'none');
+        const randomIndex = Math.floor(Math.random() * 6) + 1;
+        allGifs[randomIndex].style.display = 'block';
+      }
+      buttonNo.addEventListener('click', () => {
+        const pos = getRandomPosition();
+        buttonNo.style.position = 'absolute';
+        buttonNo.style.left = pos.x - container.getBoundingClientRect().left + 'px';
+        buttonNo.style.top = pos.y - container.getBoundingClientRect().top + 'px';
+        showRandomGif();
+      });
+      buttonYes.addEventListener('click', () => {
+        h1.textContent = 'Yay! I love you, Nour!';
+        mainCatsContainer.style.display = 'none';
+        finalCats.style.display = 'flex';
+        buttonYes.style.display = 'none';
+        buttonNo.style.display = 'none';
+        buttonRetry.style.display = 'flex';
+        buttonRetry.style.alignItems = 'center';
+        buttonRetry.style.justifyContent = 'center';
+      });
+      buttonRetry.addEventListener('click', () => location.reload());
+    </script>
   </body>
 </html>
